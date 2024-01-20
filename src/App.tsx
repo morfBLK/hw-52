@@ -10,7 +10,7 @@ import PlayCard from "./Card/PlayCard";
 function App() {
 
   const [deck, setDeck] = useState<playCard[]>([]);
-  const [win, setWin] =useState('');
+  const [win, setWin] = useState('');
   const ref = useRef(deck);
   const dealCards = () => {
     const newDeck = new CardDeck();
@@ -23,7 +23,7 @@ function App() {
     }
   };
 
-  const changeCard = (number: number) =>{
+  const changeCard = (number: number) => {
     const random = Math.floor(Math.random() * ref.current.length);
     const replacedCard = ref.current.splice(random, 1);
     const floop: PlayCard[] = [...deck];
@@ -36,13 +36,13 @@ function App() {
   };
 
   let disabled = false;
-    if (ref.current.length < 1) {
-      disabled = true;
-    }
+  if (ref.current.length < 1) {
+    disabled = true;
+  }
 
   if (!deck.length) {
     return (
-        <button onClick={dealCards}>Раздать</button>
+      <button onClick={dealCards}>Раздать</button>
     );
 
   } else {
@@ -50,12 +50,12 @@ function App() {
       <div>
         <button onClick={dealCards}>Раздать</button>
         <div>
-          <span>{win}</span>
+          <span className='win-combination'>{win}</span>
         </div>
         <div className='cards-box'>
           <div>
-          <Card rank={deck[0].rank} suit={deck[0].suit}/>
-            <button disabled={disabled} onClick={()=> changeCard(0)}>Заменить</button>
+            <Card rank={deck[0].rank} suit={deck[0].suit}/>
+            <button disabled={disabled} onClick={() => changeCard(0)}>Заменить</button>
           </div>
           <div>
             <Card rank={deck[1].rank} suit={deck[1].suit}/>

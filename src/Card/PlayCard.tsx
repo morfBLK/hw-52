@@ -1,5 +1,5 @@
 class PlayCard {
-  constructor(public suit: string, public  rank:string) {
+  constructor(public suit: string, public rank: string) {
   }
 }
 
